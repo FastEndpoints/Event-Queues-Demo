@@ -1,6 +1,7 @@
 ﻿using Contracts;
 using FastEndpoints;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
+using PublisherServer;
 
 var bld = WebApplication.CreateBuilder();
 bld.WebHost.ConfigureKestrel(o =>
@@ -9,10 +10,12 @@ bld.WebHost.ConfigureKestrel(o =>
     o.ListenLocalhost(5001, o => o.Protocols = HttpProtocols.Http1AndHttp2); // for REST
 });
 bld.AddHandlerServer();
+bld.Services.AddSingleton(new DbContext("PublisherEventStore", "localhost"));
 
 var app = bld.Build();
 app.MapHandlers(h =>
 {
+    h.EventPublisherStorageProvider<EventRecord, PublisherStorageProvider>();
     h.RegisterEventHub<SomethingHappened>();
 });
 

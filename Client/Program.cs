@@ -3,7 +3,11 @@ using FastEndpoints;
 using SubscriberClient;
 
 var bld = WebApplication.CreateBuilder();
+bld.Services.AddSingleton(new DbContext("SubscriberEventStore", "localhost"));
+
 var app = bld.Build();
+
+app.EventSubscriberStorageProvider<EventRecord, SubscriberStorageProvider>();
 
 app.MapRemote("http://localhost:6000", c =>
 {
