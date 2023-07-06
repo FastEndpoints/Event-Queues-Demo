@@ -29,6 +29,8 @@ public class SubscriberStorageProvider : IEventSubscriberStorageProvider
 
     public async ValueTask MarkEventAsCompleteAsync(IEventStorageRecord e, CancellationToken ct)
     {
+        //throw new InvalidOperationException("testing exception receiver!");
+
         await db
             .Update<EventRecord>()
             .MatchID(((EventRecord)e).ID)
