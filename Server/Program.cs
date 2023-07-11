@@ -15,7 +15,7 @@ bld.Services.AddSingleton(new DbContext("PublisherEventStore", "localhost"));
 var app = bld.Build();
 app.MapHandlers(h =>
 {
-    h.EventPublisherStorageProvider<EventRecord, PublisherStorageProvider>();
+    h.EventHubStorageProvider<EventRecord, HubStorageProvider>();
     h.RegisterEventHub<SomethingHappened>();
 });
 

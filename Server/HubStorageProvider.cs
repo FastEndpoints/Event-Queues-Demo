@@ -5,11 +5,11 @@ using MongoDB.Entities;
 
 namespace PublisherServer;
 
-public class PublisherStorageProvider : IEventPublisherStorageProvider
+public class HubStorageProvider : IEventHubStorageProvider
 {
     private readonly DbContext db;
 
-    public PublisherStorageProvider(DbContext db)
+    public HubStorageProvider(DbContext db)
     {
         this.db = db;
     }
