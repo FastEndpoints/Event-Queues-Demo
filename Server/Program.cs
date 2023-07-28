@@ -29,7 +29,7 @@ app.MapGet("/event/{name}", async (string name) =>
         }
         .Broadcast();
 
-        await Task.Delay(10);
+        await Task.Delay(500);
     }
     return Results.Ok("events published!");
 });
