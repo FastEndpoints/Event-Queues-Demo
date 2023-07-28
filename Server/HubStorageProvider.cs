@@ -5,7 +5,7 @@ using MongoDB.Entities;
 
 namespace PublisherServer;
 
-public class HubStorageProvider : IEventHubStorageProvider
+public class HubStorageProvider : IEventHubStorageProvider<EventRecord>
 {
     private readonly DbContext db;
 
@@ -14,41 +14,42 @@ public class HubStorageProvider : IEventHubStorageProvider
         this.db = db;
     }
 
-    public async ValueTask<IEnumerable<string>> RestoreSubsriberIDsForEventType(string eventType)
+    public async ValueTask<IEnumerable<string>> RestoreSubscriberIDsForEventTypeAsync(SubscriberIDRestorationParams<EventRecord> p)
     {
         return await db
             .Queryable<EventRecord>()
-            .Where(e => e.EventType == eventType && !e.IsComplete && DateTime.UtcNow <= e.ExpireOn)
-            .Select(e => e.SubscriberID)
+            .Where(p.Match)
+            .Select(p.Projection)
             .Distinct()
             .ToListAsync();
     }
 
-    public async ValueTask StoreEventAsync(IEventStorageRecord e, CancellationToken ct)
+    public async ValueTask StoreEventAsync(EventRecord r, CancellationToken ct)
     {
-        await db.SaveAsync((EventRecord)e, ct);
+        await db.SaveAsync(r, ct);
     }
 
-    public async ValueTask<IEventStorageRecord?> GetNextEventAsync(string subscriberID, CancellationToken ct)
+    public async ValueTask<IEnumerable<EventRecord>> GetNextBatchAsync(PendingRecordSearchParams<EventRecord> p)
     {
         return await db
             .Find<EventRecord>()
-            .Match(e => e.SubscriberID == subscriberID && !e.IsComplete && DateTime.UtcNow <= e.ExpireOn)
+            .Match(p.Match)
             .Sort(e => e.ID, Order.Ascending)
-            .ExecuteFirstAsync(ct);
+            .Limit(p.Limit)
+            .ExecuteAsync(p.CancellationToken);
     }
 
-    public async ValueTask MarkEventAsCompleteAsync(IEventStorageRecord e, CancellationToken ct)
+    public async ValueTask MarkEventAsCompleteAsync(EventRecord r, CancellationToken ct)
     {
         await db
             .Update<EventRecord>()
-            .MatchID(((EventRecord)e).ID)
+            .MatchID(r.ID)
             .Modify(e => e.IsComplete, true)
             .ExecuteAsync(ct);
     }
 
-    public async ValueTask PurgeStaleRecordsAsync()
+    public async ValueTask PurgeStaleRecordsAsync(StaleRecordSearchParams<EventRecord> p)
     {
-        await db.DeleteAsync<EventRecord>(e => e.IsComplete || (!e.IsComplete && DateTime.UtcNow >= e.ExpireOn));
+        await db.DeleteAsync(p.Match, p.CancellationToken);
     }
 }

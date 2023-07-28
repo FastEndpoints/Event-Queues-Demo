@@ -1,4 +1,5 @@
-﻿using FastEndpoints;
+﻿#pragma warning disable CS8618
+using FastEndpoints;
 using MongoDB.Entities;
 
 namespace SubscriberClient;

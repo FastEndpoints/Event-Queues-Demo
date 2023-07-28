@@ -13,9 +13,8 @@ bld.AddHandlerServer();
 bld.Services.AddSingleton(new DbContext("PublisherEventStore", "localhost"));
 
 var app = bld.Build();
-app.MapHandlers(h =>
+app.MapHandlers<EventRecord, HubStorageProvider>(h =>
 {
-    h.EventHubStorageProvider<EventRecord, HubStorageProvider>();
     h.RegisterEventHub<SomethingHappened>();
 });
 
@@ -30,7 +29,7 @@ app.MapGet("/event/{name}", async (string name) =>
         }
         .Broadcast();
 
-        await Task.Delay(1000);
+        await Task.Delay(10);
     }
     return Results.Ok("events published!");
 });

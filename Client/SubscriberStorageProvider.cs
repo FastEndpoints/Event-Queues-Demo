@@ -3,7 +3,7 @@ using MongoDB.Entities;
 
 namespace SubscriberClient;
 
-public class SubscriberStorageProvider : IEventSubscriberStorageProvider
+public class SubscriberStorageProvider : IEventSubscriberStorageProvider<EventRecord>
 {
     private readonly DbContext db;
 
@@ -12,34 +12,35 @@ public class SubscriberStorageProvider : IEventSubscriberStorageProvider
         this.db = db;
     }
 
-    public async ValueTask StoreEventAsync(IEventStorageRecord e, CancellationToken ct)
+    public async ValueTask StoreEventAsync(EventRecord r, CancellationToken ct)
     {
-        e.ExpireOn = DateTime.UtcNow.AddHours(24); //override default expiry time
-        await db.SaveAsync((EventRecord)e, ct);
+        r.ExpireOn = DateTime.UtcNow.AddHours(24); //override default expiry time
+        await db.SaveAsync(r, ct);
     }
 
-    public async ValueTask<IEventStorageRecord?> GetNextEventAsync(string subscriberID, CancellationToken ct)
+    public async ValueTask<IEnumerable<EventRecord>> GetNextBatchAsync(PendingRecordSearchParams<EventRecord> p)
     {
         return await db
             .Find<EventRecord>()
-            .Match(e => e.SubscriberID == subscriberID && !e.IsComplete && DateTime.UtcNow <= e.ExpireOn)
+            .Match(p.Match)
             .Sort(e => e.ID, Order.Ascending)
-            .ExecuteFirstAsync(ct);
+            .Limit(p.Limit)
+            .ExecuteAsync(p.CancellationToken);
     }
 
-    public async ValueTask MarkEventAsCompleteAsync(IEventStorageRecord e, CancellationToken ct)
+    public async ValueTask MarkEventAsCompleteAsync(EventRecord r, CancellationToken ct)
     {
         //throw new InvalidOperationException("testing exception receiver!");
 
         await db
             .Update<EventRecord>()
-            .MatchID(((EventRecord)e).ID)
+            .MatchID(r.ID)
             .Modify(e => e.IsComplete, true)
             .ExecuteAsync(ct);
     }
 
-    public async ValueTask PurgeStaleRecordsAsync()
+    public async ValueTask PurgeStaleRecordsAsync(StaleRecordSearchParams<EventRecord> p)
     {
-        await db.DeleteAsync<EventRecord>(e => e.IsComplete || (!e.IsComplete && DateTime.UtcNow >= e.ExpireOn));
+        await db.DeleteAsync(p.Match);
     }
 }
