@@ -15,3 +15,5 @@ app.MapRemote("http://localhost:6000", c =>
 });
 
 app.Run();
+
+namespace SubscriberClient { public partial class Program { }; }

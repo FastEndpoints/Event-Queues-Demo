@@ -35,3 +35,5 @@ app.MapGet("/event/{name}", async (string name) =>
 });
 
 app.Run();
+
+namespace PublisherServer { public partial class Program { }; }
