@@ -30,7 +30,7 @@ public class TestFixture : IDisposable
                 s.RegisterTestRemote(_publisher.Server); //connect subscriber to publisher
                 s.RegisterTestEventHandler<SomethingHappened, TestEventHandler>(); //using a fake handler to assert receipt of events
             });
-        }).CreateDefaultClient();
+        }).Server;
     }
 
     #region disposable
@@ -41,8 +41,9 @@ public class TestFixture : IDisposable
         {
             if (disposing)
             {
-                _publisher.Dispose();
                 PublisherClient.Dispose();
+                _subscriber.Dispose();
+                _publisher.Dispose();
             }
             disposedValue = true;
         }
