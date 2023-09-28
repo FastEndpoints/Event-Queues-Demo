@@ -10,7 +10,7 @@
     <ItemGroup>
         <PackageReference Include="MongoDB.Entities" Version="22.0.0" />
         <PackageReference Include="FastEndpoints.Messaging.Remote" Version="5.*" />
-        <!--<ProjectReference Include="..\..\..\FastEndpoints\Library\Src\Messaging.Remote\FastEndpoints.Messaging.Remote.csproj" />-->
+        <!--<ProjectReference Include="..\..\..\FastEndpoints\Src\Messaging.Remote\FastEndpoints.Messaging.Remote.csproj" />-->
     </ItemGroup>
 
     <ItemGroup>
