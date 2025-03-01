@@ -3,9 +3,9 @@ using MongoDB.Entities;
 
 namespace SubscriberClient;
 
-internal sealed class ErrorReceiver : SubscriberExceptionReceiver
+sealed class ErrorReceiver : SubscriberExceptionReceiver
 {
-    private readonly DbContext db;
+    readonly DbContext db;
 
     public ErrorReceiver(DbContext dbContext, ILogger<ErrorReceiver> logger)
     {
@@ -17,6 +17,6 @@ internal sealed class ErrorReceiver : SubscriberExceptionReceiver
     {
         var r = (EventRecord)record;
         r.IsComplete = true;
-        await r.SaveAsync();
+        await db.SaveAsync(r, ct);
     }
 }

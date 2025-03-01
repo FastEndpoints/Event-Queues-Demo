@@ -5,7 +5,7 @@ namespace SubscriberClient;
 
 public class SubscriberStorageProvider : IEventSubscriberStorageProvider<EventRecord>
 {
-    private readonly DbContext db;
+    readonly DbContext db;
 
     public SubscriberStorageProvider(DbContext db)
     {
@@ -19,28 +19,22 @@ public class SubscriberStorageProvider : IEventSubscriberStorageProvider<EventRe
     }
 
     public async ValueTask<IEnumerable<EventRecord>> GetNextBatchAsync(PendingRecordSearchParams<EventRecord> p)
-    {
-        return await db
-            .Find<EventRecord>()
-            .Match(p.Match)
-            .Sort(e => e.ID, Order.Ascending)
-            .Limit(p.Limit)
-            .ExecuteAsync(p.CancellationToken);
-    }
+        => await db.Find<EventRecord>()
+                   .Match(p.Match)
+                   .Sort(e => e.ID, Order.Ascending)
+                   .Limit(p.Limit)
+                   .ExecuteAsync(p.CancellationToken);
 
     public async ValueTask MarkEventAsCompleteAsync(EventRecord r, CancellationToken ct)
     {
         //throw new InvalidOperationException("testing exception receiver!");
 
-        await db
-            .Update<EventRecord>()
-            .MatchID(r.ID)
-            .Modify(e => e.IsComplete, true)
-            .ExecuteAsync(ct);
+        await db.Update<EventRecord>()
+                .MatchID(r.ID)
+                .Modify(e => e.IsComplete, true)
+                .ExecuteAsync(ct);
     }
 
     public async ValueTask PurgeStaleRecordsAsync(StaleRecordSearchParams<EventRecord> p)
-    {
-        await db.DeleteAsync(p.Match);
-    }
+        => await db.DeleteAsync(p.Match);
 }

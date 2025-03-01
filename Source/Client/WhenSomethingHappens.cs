@@ -3,9 +3,9 @@ using FastEndpoints;
 
 namespace SubscriberClient;
 
-internal class WhenSomethingHappens : IEventHandler<SomethingHappened>
+class WhenSomethingHappens : IEventHandler<SomethingHappened>
 {
-    private readonly ILogger<WhenSomethingHappens> _logger;
+    readonly ILogger<WhenSomethingHappens> _logger;
 
     public WhenSomethingHappens(ILogger<WhenSomethingHappens> logger)
     {
@@ -15,6 +15,7 @@ internal class WhenSomethingHappens : IEventHandler<SomethingHappened>
     public Task HandleAsync(SomethingHappened evnt, CancellationToken ct)
     {
         _logger.LogInformation("{number} - {description}", evnt.Id, evnt.Description);
+
         return Task.CompletedTask;
     }
 }

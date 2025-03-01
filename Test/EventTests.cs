@@ -12,7 +12,7 @@ public class EventTests : IClassFixture<TestFixture>
     [Fact]
     public async Task Published_Events_Are_Received_By_Subscriber()
     {
-        var res = await _publisherClient.GetStringAsync("/event/AAAA");
+        var res = await _publisherClient.GetStringAsync("/event/AAAA", TestContext.Current.CancellationToken);
 
         Assert.Equal("\"events published!\"", res);
         Assert.True(await TestEventHandler.IsTestPassed());

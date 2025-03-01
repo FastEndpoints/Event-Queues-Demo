@@ -3,13 +3,14 @@
     <PropertyGroup>
         <NoWarn>CS1591;CS8618</NoWarn>
         <OutputType>Library</OutputType>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="FastEndpoints.Messaging.Core" Version="5.*" />
+        <PackageReference Include="FastEndpoints.Messaging.Core" Version="5.34.0"/>
         <!--<ProjectReference Include="..\..\..\FastEndpoints\Src\Messaging.Core\FastEndpoints.Messaging.Core.csproj" />-->
     </ItemGroup>
 

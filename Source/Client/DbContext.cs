@@ -10,12 +10,12 @@ public class DbContext : DBContext
     {
         try
         {
-            var objectSerializer = new ObjectSerializer(type =>
-            ObjectSerializer.DefaultAllowedTypes(type) ||
-            type.FullName!.StartsWith("Contracts"));
-
+            var objectSerializer = new ObjectSerializer(type => ObjectSerializer.DefaultAllowedTypes(type) || type.FullName!.StartsWith("Contracts"));
             BsonSerializer.RegisterSerializer(objectSerializer);
         }
-        catch { }
+        catch
+        {
+            //do nothing
+        }
     }
 }
