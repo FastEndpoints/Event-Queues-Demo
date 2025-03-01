@@ -1,19 +1,11 @@
 ﻿using FastEndpoints;
-using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using MongoDB.Entities;
 
 namespace PublisherServer;
 
-public class HubStorageProvider : IEventHubStorageProvider<EventRecord>
+public class HubStorageProvider(DbContext db) : IEventHubStorageProvider<EventRecord>
 {
-    readonly DbContext db;
-
-    public HubStorageProvider(DbContext db)
-    {
-        this.db = db;
-    }
-
     public async ValueTask<IEnumerable<string>> RestoreSubscriberIDsForEventTypeAsync(SubscriberIDRestorationParams<EventRecord> p)
         => await db.Queryable<EventRecord>()
                    .Where(p.Match)

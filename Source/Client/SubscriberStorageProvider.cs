@@ -3,15 +3,8 @@ using MongoDB.Entities;
 
 namespace SubscriberClient;
 
-public class SubscriberStorageProvider : IEventSubscriberStorageProvider<EventRecord>
+public class SubscriberStorageProvider(DbContext db) : IEventSubscriberStorageProvider<EventRecord>
 {
-    readonly DbContext db;
-
-    public SubscriberStorageProvider(DbContext db)
-    {
-        this.db = db;
-    }
-
     public async ValueTask StoreEventAsync(EventRecord r, CancellationToken ct)
     {
         r.ExpireOn = DateTime.UtcNow.AddHours(24); //override default expiry time

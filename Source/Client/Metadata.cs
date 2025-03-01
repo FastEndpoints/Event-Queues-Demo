@@ -4,4 +4,4 @@
 
 namespace SubscriberClient;
 
-public class Program { }
+public class Program;

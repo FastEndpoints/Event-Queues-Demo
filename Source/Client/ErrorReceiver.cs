@@ -1,15 +1,14 @@
 ﻿using FastEndpoints;
-using MongoDB.Entities;
 
 namespace SubscriberClient;
 
 sealed class ErrorReceiver : SubscriberExceptionReceiver
 {
-    readonly DbContext db;
+    readonly DbContext _db;
 
     public ErrorReceiver(DbContext dbContext, ILogger<ErrorReceiver> logger)
     {
-        db = dbContext;
+        _db = dbContext;
         logger.LogInformation("Subscriber Error Receiver Initialized!");
     }
 
@@ -17,6 +16,6 @@ sealed class ErrorReceiver : SubscriberExceptionReceiver
     {
         var r = (EventRecord)record;
         r.IsComplete = true;
-        await db.SaveAsync(r, ct);
+        await _db.SaveAsync(r, ct);
     }
 }

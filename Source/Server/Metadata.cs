@@ -4,4 +4,4 @@
 
 namespace PublisherServer;
 
-public class Program { }
+public class Program;
