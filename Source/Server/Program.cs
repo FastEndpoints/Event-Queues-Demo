@@ -3,7 +3,7 @@ using FastEndpoints;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using PublisherServer;
 
-var bld = WebApplication.CreateBuilder();
+var bld = WebApplication.CreateBuilder(args);
 
 bld.WebHost.ConfigureKestrel(
     o =>
@@ -35,7 +35,7 @@ app.MapGet(
                 }
                 .Broadcast();
 
-            await Task.Delay(500);
+            await Task.Delay(100);
         }
 
         return Results.Ok("events published!");

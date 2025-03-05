@@ -16,8 +16,22 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3e5db37f219c479999287572a162cce37938/b0/d70f06bf/IServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b968da1dbbad4b8f85346f5dfb672aab2f4d0/53/ff966368/Assert.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2565b9d99fdde488bc7801b84387b2cc864959cfb63212e1ff576fc9c6bb7e/CancellationToken.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3c92637ae2e83da0a63791071c41eae291d594156062866d8621b7ed7245c/CastHelpers.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4f21b49fd9a46b26387bb4918d78aeb486af1c1fcddfd3862c94892d76a5df/Socket.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/57a25df0bcee58e116617434015fce7a97597cf294bb851e6d8b44c1d19d2d/Socket.Tasks.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/68d0c4d7167e6333b7b797fc79494de1faf41a5292548eb2945484f8fd4d63/DB.Save.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7925b6b6667186d94f278cbdbaa5f9aeca6b71e8674d028a917bab3776715/GrpcCall.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9abb3e87617834e5bc4d9be032d175269f7b8e4fe975c417295fc3a74ad106f/BsonClassMapSerializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a0a5a222676da827b34b8bafa4df1a3b97d58567d9db8d00a280afd42d8fc/DBContext.Save.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bd1d5c50194fea68ff3559c160230b0ab50f5acf4ce3061bffd6d62958e2182/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c7102cd0ffb8973777e61b1942c3fffac7e14016a511d055c3adf73ff91748/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df8144d0172db0ba5a19a39cbb3c819119e51cf9f192ab9cdb6675d7d5e7a9ae/FixtureMappingManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e0b4daed2f4cd473bec9df78cf7dccc0de18636d23a3aa5e8442ffa22c011a7/ConnectionManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../FastEndpoints/Src/Messaging/Messaging.Remote.Testing/EventReceiver.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../FastEndpoints/Src/Messaging/Messaging.Remote.Testing/Extensions.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -29,14 +43,21 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;rider.code.cleanup.on.save&quot;: &quot;true&quot;,
-    &quot;rider.code.cleanup.on.save.profile&quot;: &quot;clean-on-save&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.PublisherServer: Server.executor": "Debug",
+    "5469f93e-8abb-47d0-ac50-4ad68a4a316a.executor": "Debug",
+    "6638450c-4618-4ef7-a917-37bb0379827f.executor": "Debug",
+    "Attach to Process.18300:dotnet.executor": "Debug",
+    "Attach to Process.25352:dotnet.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "be1274e6-ecc2-46f8-a9ac-f36dfd59b844.executor": "Debug",
+    "dbb540cf-1501-47f8-8aa3-e4723b678dbf.executor": "Debug",
+    "rider.code.cleanup.on.save": "true",
+    "rider.code.cleanup.on.save.profile": "clean-on-save",
+    "settings.editor.selected.configurable": "CodeCleanupOptionsPage"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.PublisherServer: Server">
     <configuration name="Test" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -98,5 +119,88 @@
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="MAXIMUM_HISTORY_ROWS" value="500" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/../FastEndpoints/Src/Messaging/Messaging.Remote.Core/Client/Events/EventSubscriber.cs</url>
+          <line>151</line>
+          <properties documentPath="D:\SOURCE-CONTROL\FastEndpoints\Src\Messaging\Messaging.Remote.Core\Client\Events\EventSubscriber.cs" containingFunctionPresentation="Method 'EventExecutorTask'">
+            <startOffsets>
+              <option value="7369" />
+            </startOffsets>
+            <endOffsets>
+              <option value="7392" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Test/E2EEventTests.cs</url>
+          <line>40</line>
+          <properties documentPath="D:\SOURCE-CONTROL\Event-Queues-Demo\Test\E2EEventTests.cs" containingFunctionPresentation="Method 'IsTestPassed'">
+            <startOffsets>
+              <option value="1222" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1264" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.OperationCanceledException" isInternal="false" displayValue="OperationCanceledException" namespaceName="System">
+            <option name="internal" value="false" />
+          </properties>
+          <option name="timeStamp" value="4" />
+        </breakpoint>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Net.Sockets.SocketException" isInternal="false" displayValue="SocketException" namespaceName="System.Net.Sockets">
+            <option name="internal" value="false" />
+          </properties>
+          <option name="timeStamp" value="5" />
+        </breakpoint>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.ObjectDisposedException" isInternal="false" displayValue="ObjectDisposedException" namespaceName="System">
+            <option name="internal" value="false" />
+          </properties>
+          <option name="timeStamp" value="6" />
+        </breakpoint>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="MongoDB.Bson.BsonSerializationException" isInternal="false" displayValue="BsonSerializationException" namespaceName="MongoDB.Bson">
+            <option name="internal" value="false" />
+          </properties>
+          <option name="timeStamp" value="8" />
+        </breakpoint>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="Grpc.Core.RpcException" isInternal="false" displayValue="RpcException" namespaceName="Grpc.Core">
+            <option name="internal" value="false" />
+          </properties>
+          <option name="timeStamp" value="9" />
+        </breakpoint>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="Xunit.Sdk.TrueException" isInternal="false" displayValue="TrueException" namespaceName="Xunit.Sdk">
+            <option name="internal" value="false" />
+          </properties>
+          <option name="timeStamp" value="15" />
+        </breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="DotNet Exception Breakpoints" />
+      </default-breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Type#Contracts.SomethingHappened" memberName="Id" />
+        <PinnedItemInfo parentTag="Type#Contracts.SomethingHappened" memberName="Description" />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="RiderUnitTests">
+        <watch expression="_testEventReceiver" />
+        <watch expression="_tmp_sp" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

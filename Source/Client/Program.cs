@@ -2,7 +2,7 @@
 using FastEndpoints;
 using SubscriberClient;
 
-var bld = WebApplication.CreateBuilder();
+var bld = WebApplication.CreateBuilder(args);
 bld.Services
    .AddSingleton(new DbContext("SubscriberEventStore", "localhost"))
    .AddEventSubscriberStorageProvider<EventRecord, SubscriberStorageProvider>();
